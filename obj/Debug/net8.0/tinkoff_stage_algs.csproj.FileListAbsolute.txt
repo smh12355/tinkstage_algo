@@ -1,0 +1,14 @@
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\bin\Debug\net8.0\tinkoff_stage_algs.exe
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\bin\Debug\net8.0\tinkoff_stage_algs.deps.json
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\bin\Debug\net8.0\tinkoff_stage_algs.runtimeconfig.json
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\bin\Debug\net8.0\tinkoff_stage_algs.dll
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\bin\Debug\net8.0\tinkoff_stage_algs.pdb
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\tinkoff_stage_algs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\tinkoff_stage_algs.AssemblyInfoInputs.cache
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\tinkoff_stage_algs.AssemblyInfo.cs
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\tinkoff_stage_algs.csproj.CoreCompileInputs.cache
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\tinkoff_stage_algs.dll
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\refint\tinkoff_stage_algs.dll
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\tinkoff_stage_algs.pdb
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\tinkoff_stage_algs.genruntimeconfig.cache
+C:\Users\krik6\OneDrive\Рабочий стол\tinkoff_stage_algs\obj\Debug\net8.0\ref\tinkoff_stage_algs.dll
