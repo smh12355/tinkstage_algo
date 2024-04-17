@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        third();
+        fourth();
     }
 
     static void first()
@@ -77,15 +77,15 @@ class Program
             Console.WriteLine(-1);
         }
     }
-    
+
     static void second()
     {
         var dimensions = Console.ReadLine().Split().Select(x => int.Parse(x)).ToArray();
-        var matrix = new int[dimensions[0],dimensions[1]];
+        var matrix = new long[dimensions[0], dimensions[1]];
         //var new_matrix = new int[dimensions[1], dimensions[0]];
         for (int i = 0; i < dimensions[0]; i++)
         {
-            var array_data = Console.ReadLine().Split().Select(x => int.Parse(x)).ToArray();
+            var array_data = Console.ReadLine().Split().Select(x => long.Parse(x)).ToArray();
             for (int j = 0; j < dimensions[1]; j++)
             {
                 matrix[i, j] = array_data[j];
@@ -105,11 +105,71 @@ class Program
     static void third()
     {
         var amount = int.Parse(Console.ReadLine());
-        List<string> roots = new List<string>();
-        for (int i = 0;i < amount;i++)
+        List<string[]> roots = new List<string[]>();
+        for (int i = 0; i < amount; i++)
         {
-            roots.Add(Console.ReadLine());
+            roots.Add(Console.ReadLine().Split('/').ToArray());
+        }
+        roots.Sort((x, y) => y.Length.CompareTo(x.Length));
+        Console.WriteLine(roots[^1][0]);
+        roots.Remove(roots[^1]);
+        for (int i = 0; i < roots.Count; i++)
+        {
+            for (int j = 1; j < roots[i].Length; j++)
+            {
+                Console.Write(string.Join("", Enumerable.Repeat("  ", j)));
+                Console.WriteLine(roots[i][j]);
+            }
+            for (int j = 1; j < roots[i].Length - 1; j++)
+            {
+                roots.RemoveAll(x => x.Length == roots[i].Length - j && x[^1] == roots[i][^(j + 1)]);
+            }
         }
     }
-    
+    static void fourth()
+    {
+        var input = Console.ReadLine().Split().ToArray();
+        //var dim = int.Parse(input[0]);
+        //var turn_side = input[1];
+        var matrix = new long[int.Parse(input[0]), int.Parse(input[0])];
+        for (int i = 0; i < int.Parse(input[0]); i++)
+        {
+            var array_data = Console.ReadLine().Split().Select(x => long.Parse(x)).ToArray();
+            for (int j = 0; j < int.Parse(input[0]); j++)
+            {
+                matrix[i, j] = array_data[j];
+            }
+        }
+        Console.Write($"{int.Parse(input[0]) * int.Parse(input[0])}\n");
+        if (input[1] is "R")
+        {
+            for (int i = 0; i < int.Parse(input[0]); i++)
+            {
+                for (int j = 0; j < int.Parse(input[0]); j++)
+                {
+                    //new_matrix[i, j] = matrix[dimensions[0] - 1 - j, i];
+                    Console.Write(matrix[int.Parse(input[0]) - 1 - j, i]);
+                    //Console.Write($"{i} {j} {int.Parse(input[0]) - 1 - j} {i}\n");
+                }
+                Console.WriteLine();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < int.Parse(input[0]); i++)
+            {
+                for (int j = 0; j < int.Parse(input[0]); j++)
+                {
+                    //new_matrix[i, j] = matrix[dimensions[0] - 1 - j, i];
+                    //Console.Write(matrix[int.Parse(input[0]) - 1 - j, i]);
+                    Console.Write(matrix[j, int.Parse(input[0]) - 1 - i]);
+                    //Console.Write($"{i} {j} {int.Parse(input[0]) - 1 - j} {i}\n");
+                }
+                Console.WriteLine();
+            }
+        }
+
+    }
 }
+    
+
