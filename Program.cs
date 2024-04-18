@@ -1,4 +1,6 @@
-﻿namespace tinkoff_stage_algs;
+﻿using System.Text;
+
+namespace tinkoff_stage_algs;
 
 class Program
 {
@@ -148,10 +150,10 @@ class Program
                 for (int j = 0; j < int.Parse(input[0]); j++)
                 {
                     //new_matrix[i, j] = matrix[dimensions[0] - 1 - j, i];
-                    Console.Write(matrix[int.Parse(input[0]) - 1 - j, i]);
-                    //Console.Write($"{i} {j} {int.Parse(input[0]) - 1 - j} {i}\n");
+                    //Console.Write(matrix[int.Parse(input[0]) - 1 - j, i]);
+                    Console.Write($"{i} {j} {int.Parse(input[0]) - 1 - j} {i}\n");
                 }
-                Console.WriteLine();
+                //Console.WriteLine();
             }
         }
         else
@@ -162,14 +164,176 @@ class Program
                 {
                     //new_matrix[i, j] = matrix[dimensions[0] - 1 - j, i];
                     //Console.Write(matrix[int.Parse(input[0]) - 1 - j, i]);
-                    Console.Write(matrix[j, int.Parse(input[0]) - 1 - i]);
-                    //Console.Write($"{i} {j} {int.Parse(input[0]) - 1 - j} {i}\n");
+                    //Console.Write(matrix[j, int.Parse(input[0]) - 1 - i]);
+                    Console.Write($"{i} {j} {int.Parse(input[0]) - 1 - j} {i}\n");
                 }
-                Console.WriteLine();
+                //Console.WriteLine();
             }
         }
 
+        static void fourth_another()
+        {
+            var input = Console.ReadLine().Split().ToArray();
+            var matrix_dict = new Dictionary<(int, int), (long, long)>();
+            for (int i = 0; i < int.Parse(input[0]); i++)
+            {
+                var array_data = Console.ReadLine().Split().Select(x => long.Parse(x)).ToArray();
+                for (int j = 0; j < int.Parse(input[0]); j++)
+                {
+                    matrix_dict.Add((i, j), (array_data[j], -1));
+                }
+            }
+            var for_del = new List<(int, int)>();
+            if (input[1] is "R")
+            {
+                for (int i = 0; i < int.Parse(input[0]); i++)
+                {
+                    for (int j = 0; j < int.Parse(input[0]); j++)
+                    {
+                        if (matrix_dict[(i, j)] == matrix_dict[(int.Parse(input[0]) - 1 - j, i)])
+                        {
+                            for_del.Add((i, j));
+                        }
+                        else
+                        {
+                            matrix_dict[(i, j)] = (matrix_dict[(i, j)].Item1, matrix_dict[(int.Parse(input[0]) - 1 - j, i)].Item1);
+                        }
+                    }
+                }
+                foreach (var item in for_del)
+                {
+                    matrix_dict.Remove(item);
+                }
+                var counter = 0;
+                var output = new StringBuilder();
+                foreach (var item in matrix_dict)
+                {
+                    counter++;
+                    var key = matrix_dict.FirstOrDefault(x => x.Value.Item1 == item.Value.Item2);
+                    var container = matrix_dict[key.Key].Item1;
+                    matrix_dict[key.Key] = (matrix_dict[item.Key].Item1, matrix_dict[key.Key].Item2);
+                    matrix_dict[item.Key] = (container, matrix_dict[item.Key].Item2);
+                    output.Append($"{item.Key.Item1} {item.Key.Item2} {key.Key.Item1} {key.Key.Item2}");
+                    output.Append(Environment.NewLine);
+                    matrix_dict.Remove(item.Key);
+                    if (matrix_dict.Count == 1)
+                    {
+                        break;
+                    }
+                }
+                Console.WriteLine(counter);
+                Console.Write(output.ToString());
+            }
+            else
+            {
+                for (int i = 0; i < int.Parse(input[0]); i++)
+                {
+                    for (int j = 0; j < int.Parse(input[0]); j++)
+                    {
+                        if (matrix_dict[(i, j)] == matrix_dict[(j, int.Parse(input[0]) - 1 - i)])
+                        {
+                            for_del.Add((i, j));
+                        }
+                        else
+                        {
+                            matrix_dict[(i, j)] = (matrix_dict[(i, j)].Item1, matrix_dict[(j, int.Parse(input[0]) - 1 - i)].Item1);
+                        }
+                    }
+                }
+                foreach (var item in for_del)
+                {
+                    matrix_dict.Remove(item);
+                }
+                var counter = 0;
+                var output = new StringBuilder();
+                foreach (var item in matrix_dict)
+                {
+                    counter++;
+                    var key = matrix_dict.FirstOrDefault(x => x.Value.Item1 == item.Value.Item2);
+                    var container = matrix_dict[key.Key].Item1;
+                    matrix_dict[key.Key] = (matrix_dict[item.Key].Item1, matrix_dict[key.Key].Item2);
+                    matrix_dict[item.Key] = (container, matrix_dict[item.Key].Item2);
+                    output.Append($"{item.Key.Item1} {item.Key.Item2} {key.Key.Item1} {key.Key.Item2}");
+                    output.Append(Environment.NewLine);
+                    matrix_dict.Remove(item.Key);
+                    if (matrix_dict.Count == 1)
+                    {
+                        break;
+                    }
+                }
+                Console.WriteLine(counter);
+                Console.Write(output.ToString());
+            }
+            
+        }
+        static void five()
+        {
+            var n = int.Parse(Console.ReadLine());
+            var forest = new List<List<int>>();
+            var dynamic_forest = new List<int[]>();
+            for (int i = 0; i < n; i++)
+            {
+                dynamic_forest.Add(new int[] { -1, -1, -1 });
+            }
+            for (int i = 0; i < n; i++)
+            {
+                var input = Console.ReadLine().ToArray();
+                var input_list = new List<int>();
+                for (int j = 0; j < 3; j++)
+                {
+                    if (input[j].ToString() is "W")
+                    {
+                        input_list.Add(-1);
+                    }
+                    else if (input[j].ToString() is ".")
+                    {
+                        input_list.Add(0);
+                    }
+                    else
+                    {
+                        input_list.Add(1);
+                    }
+                }
+                forest.Add(input_list);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                dynamic_forest[0][i] = forest[0][i];
+            }
+
+            for (int i = 1; i < n; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    for (int k = -1; k <= 1; k++)
+                    {
+                        if (j + k >= 0 && j + k < 3 && dynamic_forest[i - 1][j + k] != -1 && forest[i][j] != -1)
+                        {
+                            dynamic_forest[i][j] = Math.Max(dynamic_forest[i][j], dynamic_forest[i - 1][j + k] + forest[i][j]);
+                        }
+                    }
+                }
+            }
+            var collected = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    collected = Math.Max(collected, dynamic_forest[i][j]);
+                }
+            }
+            Console.Write(collected);
+        }
+        static void six()
+        {
+            var n = int.Parse(Console.ReadLine());
+            for (int i = 0; n > 0; i++)
+            {
+                  
+            }
+        }
     }
 }
+
     
 

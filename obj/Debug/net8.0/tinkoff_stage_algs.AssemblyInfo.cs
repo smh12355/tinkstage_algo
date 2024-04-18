@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tinkoff_stage_algs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a19e5955b2e79184d539cd76764a42f26783a03")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba08c077a2e0c047650bfad3051dbe97412ba93e")]
 [assembly: System.Reflection.AssemblyProductAttribute("tinkoff_stage_algs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tinkoff_stage_algs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
